@@ -13,3 +13,7 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
+
+html, body {
+  font-family: 'Source Code Pro';
+}

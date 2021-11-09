@@ -2,6 +2,12 @@ module.exports = {
   purge: ['./components/**/*.js', './pages/**/*.js'],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat'],
+        code: ['Source Code Pro'],
+        cormorant: ['Cormorant'],
+      },
+      // below here is from NextJS starter setup
       colors: {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
@@ -30,4 +36,4 @@ module.exports = {
       },
     },
   },
-}
+};
