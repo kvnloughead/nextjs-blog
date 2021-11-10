@@ -1,6 +1,7 @@
-import Container from './container'
-import cn from 'classnames'
-import { EXAMPLE_PATH } from '../lib/constants'
+/* eslint-disable react/prop-types */
+import cn from 'classnames';
+import Container from './container';
+import { EXAMPLE_PATH } from '../lib/constants';
 
 export default function Alert({ preview }) {
   return (
@@ -38,5 +39,5 @@ export default function Alert({ preview }) {
         </div>
       </Container>
     </div>
-  )
+  );
 }
