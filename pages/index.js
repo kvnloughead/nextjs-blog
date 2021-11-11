@@ -1,11 +1,13 @@
+import Head from 'next/head';
+import { string, objectOf, arrayOf, shape } from 'prop-types';
+
 import Container from '../components/container';
 import MoreStories from '../components/more-stories';
 import HeroPost from '../components/hero-post';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
 import { getAllPosts } from '../lib/api';
-import Head from 'next/head';
-import { BLOG_SITE_NAME, CMS_NAME } from '../lib/constants';
+import { BLOG_SITE_NAME } from '../lib/constants';
 import DateFormatter from '../components/date-formatter';
 
 export default function Index({ allPosts }) {
@@ -33,13 +35,26 @@ export default function Index({ allPosts }) {
               />
             </>
           )}
-          <div className='border-b-4 border-blue-500'></div>
+          <div className="border-b-4 border-blue-500" />
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>
       </Layout>
     </>
   );
 }
+
+Index.propTypes = {
+  allPosts: arrayOf(
+    shape({
+      title: string.isRequired,
+      coverImage: string.isRequired,
+      date: string.isRequired,
+      author: objectOf(string.isRequired).isRequired,
+      slug: string.isRequired,
+      excerpt: string.isRequired,
+    })
+  ).isRequired,
+};
 
 export async function getStaticProps() {
   const allPosts = getAllPosts([

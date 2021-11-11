@@ -8,9 +8,6 @@ Container.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.objectOf(PropTypes.element),
-  ]),
-};
-
-Container.defaultProps = {
-  children: () => [<div>Default</div>],
+    PropTypes.element,
+  ]).isRequired,
 };
