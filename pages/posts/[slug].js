@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
+import Head from 'next/head';
+import { string, shape, objectOf } from 'prop-types';
+
 import Container from '../../components/container';
 import PostBody from '../../components/post-body';
 import Header from '../../components/header';
@@ -7,29 +10,28 @@ import PostHeader from '../../components/post-header';
 import Layout from '../../components/layout';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
 import PostTitle from '../../components/post-title';
-import Head from 'next/head';
-import { BLOG_SITE_NAME, CMS_NAME } from '../../lib/constants';
+import { BLOG_SITE_NAME } from '../../lib/constants';
 import markdownToHtml from '../../lib/markdownToHtml';
 
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post }) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className='mb-32'>
+            <article className="mb-32">
               <Head>
                 <title>
                   {post.title} | {BLOG_SITE_NAME}
                 </title>
-                <meta property='og:image' content={post.ogImage.url} />
+                <meta property="og:image" content={post.ogImage.url} />
               </Head>
               <PostHeader
                 title={post.title}
@@ -45,6 +47,19 @@ export default function Post({ post, morePosts, preview }) {
     </Layout>
   );
 }
+
+const postType = shape({
+  title: string.isRequired,
+  coverImage: string.isRequired,
+  date: string.isRequired,
+  author: objectOf(string).isRequired,
+  slug: string.isRequired,
+  ogImage: shape({ url: string.isRequired }),
+});
+
+Post.propTypes = {
+  post: postType.isRequired,
+};
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug, [
@@ -72,13 +87,11 @@ export async function getStaticPaths() {
   const posts = getAllPosts(['slug']);
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
+    paths: posts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    })),
     fallback: false,
   };
 }

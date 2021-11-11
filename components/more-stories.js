@@ -1,4 +1,6 @@
-import PostPreview from '../components/post-preview';
+import { string, objectOf, arrayOf, shape } from 'prop-types';
+
+import PostPreview from './post-preview';
 
 export default function MoreStories({ posts }) {
   return (
@@ -22,3 +24,16 @@ export default function MoreStories({ posts }) {
     </section>
   );
 }
+
+MoreStories.propTypes = {
+  posts: arrayOf(
+    shape({
+      title: string.isRequired,
+      coverImage: string.isRequired,
+      date: string.isRequired,
+      author: objectOf(string.isRequired).isRequired,
+      slug: string.isRequired,
+      excerpt: string.isRequired,
+    })
+  ).isRequired,
+};
