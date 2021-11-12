@@ -1,18 +1,23 @@
 @tailwind base;
-
-/* Write your own custom base styles here */
-
-/* Start purging... */
 @tailwind components;
-/* Stop purging. */
-
-/* Write you own custom component styles here */
-
-/* Start purging... */
 @tailwind utilities;
-/* Stop purging. */
 
-/* Your own custom utilities */
+@layer components {
+  .excerpt-text {
+    @apply text-base leading-relaxed mb-4 md:text-lg
+  }
+  .post-index-text {
+    @apply mb-8 text-xs uppercase tracking-wider font-montserrat text-blue-500
+  }
+
+  .date-text {
+    @apply font-montserrat text-xs uppercase tracking-wider font-light
+  }
+
+  .heavy-bottom-border {
+    @apply border-b-4 border-gray-300
+  }
+}
 
 html, body {
   font-family: 'Source Code Pro';
