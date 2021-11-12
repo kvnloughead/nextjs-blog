@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Footer from './footer';
+import Header from './header';
 import Meta from './meta';
 
 export default function Layout({ children }) {
@@ -7,7 +8,8 @@ export default function Layout({ children }) {
     <>
       <Meta />
       <div className="min-h-screen">
-        <main>{children}</main>
+        <Header />
+        <main className="pt-24 pb-10 px-6 max-w-4xl mx-auto">{children}</main>
       </div>
       <Footer />
     </>
