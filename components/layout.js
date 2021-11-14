@@ -1,9 +1,19 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Prism from 'prismjs';
+
 import Footer from './footer';
 import Header from './header';
 import Meta from './meta';
 
+require('prismjs/components/prism-bash');
+require('prismjs/components/prism-jsx');
+require('../styles/prism-plain-text');
+
 export default function Layout({ children }) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <>
       <Meta />
