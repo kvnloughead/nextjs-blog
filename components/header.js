@@ -1,14 +1,21 @@
 import Link from 'next/link';
+
 import { BLOG_SITE_NAME } from '../lib/constants';
 
 export default function Header() {
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
+    <header className="font-code font-bold text-l md:text-2xl flex flex-row justify-between items-start shadow-sm md:justify-between py-4 px-6 lg:px-10 xl:px-12">
       <Link href="/">
         <a href="/" className="hover:underline">
           {BLOG_SITE_NAME}
         </a>
       </Link>
-    </h2>
+      <button
+        type="button"
+        className="font-code font-bold text-l md:text-2xl hover:underline"
+      >
+        Menu
+      </button>
+    </header>
   );
 }
