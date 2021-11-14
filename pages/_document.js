@@ -8,22 +8,26 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head>
           <link
-            href='https://fonts.googleapis.com/css2?family=Cormorant&display=swap'
-            rel='stylesheet'
+            href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap"
+            rel="stylesheet"
           />
           <link
-            href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
-            rel='stylesheet'
+            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+            rel="stylesheet"
           />
           <link
-            href='https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap'
-            rel='stylesheet'
+            href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Garamond&display=swap"
+            rel="stylesheet"
           />
         </Head>
-        <body>
+        <body className="text-standard">
           <Main />
           <NextScript />
         </body>
