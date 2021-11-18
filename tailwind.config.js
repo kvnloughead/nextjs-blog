@@ -15,6 +15,7 @@ module.exports = {
         success: '#0070f3',
         cyan: '#79FFE1',
         standard: '#676778',
+        footnotes: '#CCCCCC',
       },
       spacing: {
         28: '7rem',

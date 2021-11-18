@@ -12,6 +12,7 @@ import { getPostBySlug, getAllPosts } from '../../lib/api';
 import PostTitle from '../../components/post-title';
 import { BLOG_SITE_NAME } from '../../lib/constants';
 import markdownToHtml from '../../lib/markdownToHtml';
+import handleFootnotes from '../../lib/footnotes';
 
 export default function Post({ post }) {
   const router = useRouter();
@@ -19,10 +20,14 @@ export default function Post({ post }) {
     return <ErrorPage statusCode={404} />;
   }
 
+  // this effect prevents the 'dangerouslySetInnerHTML' doesn't match error
+  // TODO - extract this into an effect or component
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  const content = handleFootnotes(post.content, post.slug);
 
   return (
     <>
@@ -46,7 +51,7 @@ export default function Post({ post }) {
                     date={post.date}
                     author={post.author}
                   />
-                  <PostBody content={post.content} />
+                  <PostBody content={content} />
                 </article>
               </>
             )}
