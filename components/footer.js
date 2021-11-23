@@ -2,10 +2,10 @@ import Container from './container';
 
 export default function Footer() {
   return (
-    <footer className="bg-accent-1 border-t border-accent-2">
+    <footer className="bg-accent-1 border-t px-6 border-accent-2">
       <Container>
         <div className="py-14 flex flex-col lg:flex-row lg:justify-between items-center max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
+          <h3 className="font-serif font-bold text-2xl text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
             A blog built with Next.js and Tailwindcss
           </h3>
           <div className="flex flex-col lg:flex-row justify-between items-center lg:pl-4 lg:w-5/12">

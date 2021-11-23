@@ -1,5 +1,5 @@
 ---
-title: 'A Script for Creating React Components — Part 2'
+title: 'Automating React Component Creation — Part 2'
 excerpt: 'A more complicated Bash scripting tutorial'
 coverImage: ''
 date: '2021-10-13'

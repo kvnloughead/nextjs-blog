@@ -1,5 +1,5 @@
 ---
-title: 'How to search through text with `grep`'
+title: 'How to search through text with grep'
 excerpt: 'Some simple ways to use a complicated tool'
 coverImage: ''
 date: '2021-11-17'

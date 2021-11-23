@@ -7,18 +7,18 @@
     @apply text-base leading-relaxed mb-4 md:text-lg
   }
   .post-index-text {
-    @apply mb-8 text-xs uppercase tracking-wider font-montserrat text-blue-500
+    @apply mb-8 text-xs uppercase tracking-wider text-blue-500
   }
 
   .date-text {
-    @apply font-montserrat text-xs uppercase tracking-wider font-light
+    @apply font-mono text-xs uppercase tracking-wider font-light
   }
 
-  .heavy-bottom-border {
-    @apply border-b-4 border-gray-300
+  .light-bottom-border {
+    @apply border-b border-accent-2
   }
 }
 
 html, body {
-  font-family: 'Source Code Pro';
+  font-family: 'Source Sans Pro', sans-serif;
 }

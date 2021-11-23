@@ -1,13 +1,14 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: ['./components/**/*.js', './pages/**/*.js'],
   theme: {
+    fontFamily: {
+      sans: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
+      mono: ['Source Code Pro', ...defaultTheme.fontFamily.mono],
+      serif: ['Source Serif Pro', ...defaultTheme.fontFamily.serif],
+    },
     extend: {
-      fontFamily: {
-        montserrat: ['Montserrat'],
-        code: ['Source Code Pro'],
-        cormorant: ['Cormorant'],
-        garamond: ['Garamond'],
-      },
       colors: {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',

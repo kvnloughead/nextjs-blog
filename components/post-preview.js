@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function PostPreview({ title, excerpt, slug }) {
   return (
     <div>
-      <h3 className="text-2xl md:text-3xl font-bold leading-snug">
+      <h3 className="font-bold font-serif text-2xl md:text-3xl leading-snug">
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
           <a href="/posts/[slug]" className="hover:underline">
             {title}
