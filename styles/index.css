@@ -17,6 +17,16 @@
   .light-bottom-border {
     @apply border-b border-accent-2
   }
+
+
+  /* markdown styling */
+  code {
+    @apply bg-gray-200 px-2 rounded-sm
+  }
+
+  p > a {  /* style links inside markdown paragraphs */
+    @apply underline
+  }
 }
 
 html, body {
