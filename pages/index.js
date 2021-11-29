@@ -20,7 +20,7 @@ export default function Index({ allPosts }) {
         <Container>
           {heroPost && (
             <>
-              <h2 className="post-index-text">Most recent post</h2>
+              <h2 className="post-index-text">Featured</h2>
               <HeroPost
                 title={heroPost.title}
                 coverImage={heroPost.coverImage}
