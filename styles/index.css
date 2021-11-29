@@ -14,9 +14,12 @@
     @apply font-mono text-xs uppercase tracking-wider font-light
   }
 
-  /* markdown styling */
-  code {
-    @apply bg-gray-200 px-2 rounded-sm
+  pre {
+    @apply rounded-md
+  }
+  
+  p > code {  /* inline code style */
+    @apply bg-gray-200 px-2 rounded-md
   }
 
   p > a {  /* style links inside markdown paragraphs */
