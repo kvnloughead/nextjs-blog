@@ -1,6 +1,8 @@
 ---
-title: 'Automating React Component Creation — Part 2'
-excerpt: 'A more complicated Bash scripting tutorial'
+title: 'A Script to Create React Components'
+excerpt: |
+  This is the second part of my article on writing a bash script to automate some
+  parts of creating React components. Part 2 of 2.
 coverImage: ''
 date: '2021-10-13'
 author:

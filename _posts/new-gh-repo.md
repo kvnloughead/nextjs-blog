@@ -1,6 +1,9 @@
 ---
 title: 'Automating the Creation of New Github Repos'
-excerpt: 'A relatively simple bash scripting tutorial.'
+excerpt: |
+  Today I'm going to walk you through writing a Bash script to automate a common 
+  task: creating a new repo on github, setting it as the remote of a local repo, 
+  and making your first push to the new repo.  
 coverImage: ''
 date: '2021-10-13'
 author:

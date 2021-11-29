@@ -1,6 +1,9 @@
 ---
-title: 'Automating React Component Creation — Part 1'
-excerpt: 'A more complicated Bash scripting tutorial'
+title: 'A Script to Create React Components'
+excerpt: | 
+  After creating new React components manually for the umpteenth time I decided 
+  that the process could be automated a bit. We have CRA for React apps. Why not 
+  CRC, for React components? Part 1 of 2.
 coverImage: ''
 date: '2021-10-13'
 author:
@@ -59,55 +62,34 @@ const Header = () => {
 export default Header;
 ```
 
-The `css` file will be empty. In the future we'll expand the script to allow 
-styled-components.
+The `css` file will be empty. In the future we'll expand the script to allow styled-components.
 
-Now that we've described what our script will do, it's time to get down to work.
-First, we need to create a script and make it executable. Let's create it in our
-`~/bin` directory, where `~` refers to the user directory. Depending on what
-system you're running, this directory may or may not exist already. If it 
-doesn't, feel free to create it. We'll store our executable (aka "_bin_ary")
-files here. If you create this directory yourself, you'll' have to instruct your
-OS to look there when its searching for commands to execute. Otherwise it won't
-find your program when try to run it. To do this, first open your `~/.bashrc` 
-file in an editor. This file is where many of your user settings for Bash are 
-stored. If you search it for the string `PATH` and you see a line that looks 
-like this
+Now that we've described what our script will do, it's time to get down to work. First, we need to create a script and make it executable. Let's create it in our `~/bin` directory, where `~` refers to the user directory. Depending on what system you're running, this directory may or may not exist already. If it doesn't, feel free to create it. We'll store our executable (aka "*bin*ary") files here. If you create this directory yourself, you'll' have to instruct your OS to look there when its searching for commands to execute. Otherwise it won't find your program when try to run it. To do this, first open your `~/.bashrc` file in an editor. This file is where many of your user settings for Bash are stored. If you search it for the string `PATH` and you see a line that looks like this
 
 ```bash
 export PATH="$HOME/bin:$PATH"
 ```
 
-then your `~/bin` directory is already on the "PATH" that your OS will follow 
-when looking for executables. If not, add that line somewhere. You might want to
-mark off a section for settings that you enter yourself, to help you distinguish
-between them and the initial settings. But note that these changes won't take 
-effect until either
+then your `~/bin` directory is already on the "PATH" that your OS will follow when looking for executables. If not, add that line somewhere. You might want to mark off a section for settings that you enter yourself, to help you distinguish between them and the initial settings. But note that these changes won't take effect until either
 
 1. you start a new terminal session, or
 2. you make bash register the changes by "sourcing" `~/.bashrc`.
 
-The command for the second option is `source ~/.bashrc`, or `. ~/.bashrc` for 
-short. So run that command now.
+The command for the second option is `source ~/.bashrc`, or `. ~/.bashrc` for short. So run that command now.
 
-Next, create a file called `crc.sh` inside `~/bin`. This is the file that will
-hold our script. But we won't actually be able to execute our script at the 
-command line without changing the permissions of the file. So run this command 
-inside your `~/bin` directory:
+Next, create a file called `crc.sh` inside `~/bin`. This is the file that will hold our script. But we won't actually be able to execute our script at the command line without changing the permissions of the file. So run this command inside your `~/bin` directory:
 
 ```plain-text
 chmod u+x crc.sh
 ```
 
-It will allow the file to be executed by the file's owner. If instead you wanted
-it to be exectuble by anyone, you could run
+It will allow the file to be executed by the file's owner. If instead you wanted it to be exectuble by anyone, you could run
 
 ```plain-text
 chmod x crc.sh
 ```
 
-Now let's make sure our script runs, by writing the traditional first program. 
-So add this text to `crc.sh`
+Now let's make sure our script runs, by writing the traditional first program. So add this text to `crc.sh`
 
 ```bash
 #!/bin/bash
@@ -115,15 +97,7 @@ So add this text to `crc.sh`
 echo "Hello, World!"
 ```
 
-and the run the command `crc.sh`. The string `Hello, World!` should be be 
-printed to the terminal. And this command should work fine from any directory, 
-not just from inside `~/bin`, because that `bin` directory is on our path. 
-But you may be wondering if we can call it without the `.sh`? One way to do this
-is with an alias. Remember `~/.bashrc`, where we exported the `bin` directory to
-your path? Open that up again and scroll to the bottom. We are going to set up a
-simple alias so that will allow us to call `crc.sh` by using simply `crc`. This
-is similar to creating a variable, but differs in some key respects, which we'll
-cover in more detail later on. The syntax is like this:
+and the run the command `crc.sh`. The string `Hello, World!` should be be printed to the terminal. And this command should work fine from any directory, not just from inside `~/bin`, because that `bin` directory is on our path. But you may be wondering if we can call it without the `sh`? One way to do this is with an alias. Remember `~/.bashrc`, where we exported the `bin` directory to your path? Open that up again and scroll to the bottom. We are going to set up a simple alias so that will allow us to call `crc.sh` by using simply `crc`. This is similar to creating a variable, but differs in some key respects, which we'll cover in more detail later on. The syntax is like this:
 
 ```bash
 alias newCommmand="command args"
@@ -135,9 +109,4 @@ In this case, we don't need any arguments. We can just write:
 alias crc="crc.sh"
 ```
 
-Now if we source `~/.bashrc` again and run `crc` we should see that it works. 
-Great! We have a 'Hello World' program. In the next installment, we will make 
-the program do something a bit more useful.
-
-
-
+Now if we source `~/.bashrc` again and run `crc` we should see that it works. Great! We have a 'Hello World' program. In the next installment, we will make the program do something a bit more useful.
