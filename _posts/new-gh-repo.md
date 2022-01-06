@@ -16,8 +16,8 @@ ogImage:
 Today I'm going to walk you through writing a Bash script to automate a common 
 task: creating a new repo on github, setting it as the remote of a local repo, 
 and making your first push to the new repo.  This will require you to use 
-Github's command line interface, which I wrote about [here](/posts/gh-cli). 
-Make sure you've got that set up before you try this out.
+Github's [command line interface](https://github.com/cli/cli), so 
+make sure you've got that set up before you try this out.
 
 I'm working on Windows using Windows Subsystem for Linux (WSL2). With some 
 modifications, the same script should be implementable on any *nix OS.
@@ -47,30 +47,45 @@ where the executable is. And note that the file path starts with  `/bin` , not
 `~/bin`. The former is for important system executables, the latter is for your
 own scripts.
 
-Ok, after this we can write our script. We can almost just write the commands
-like we would enter them in the terminal. Add this below the shebang:
+After this, we can start writing our script. We'll be assuming that we are in a local git repo that has at least one commit. What we need to do is
+
+1. create a remote repo on GitHub,
+2. set this repo as the remote for our local repo, and
+3. push the changes.
+
+Let's start with creating the new repo on GitHub. We can do this with 
 
 ```bash
-gh create-repo project-name
+gh repo create project-name --public
+```
+
+where `project-name` is the name of the repo, and `--public` is a required flag. If you'd rather the repo be private, change this to `--private`. The next two lines are probably familiar to you:
+
+```bash
 git remote add origin https://github.com/<your-username>/project-name
 git push -u origin main
 ```
 
-Just change `<your-username>` to your Github username. And this actually a working
-script... abeit not a very useful one, since we've hardcoded the name of the
-repo. But let's give it a spin to make sure it's functioning. Then we'll improve
-it by allowing an arbitrary repo name.
+Just change `<your-username>` to your Github username. And what we have here is actually a working script,
 
-Now before we can execute this script, we have to make it executable. You can do
+```bash
+#!/bin/bash
+
+gh repo create project-name --public
+git remote add origin https://github.com/kvnloughead/project-name.git
+git push -u origin main
+```
+
+albeit not a very useful one, since we've hardcoded the name of the repo. But let's give it a spin to make sure it's functioning. Then we'll improve it by allowing an arbitrary repo name.
+
+Before we can execute this script, we have to make it executable. You can do
 this with the `chmod` command:
 
 ```plain-text 
 $ chmod u+x ~/bin/gh-new.sh
 ```
 
-This gives the user (you) the right to execute the file. After this, it should
-be executable. To try it out we will need to set up a new local repo and prep it
-for pushing. You can do so quickly like so
+You'll only have to do this once. This gives the user (you) the right to execute the file. Now, let's set up a new local repo and prep it for pushing. You can do so quickly like this:
 
 ```plain-text
 $ mkdir temp && cd temp
@@ -90,7 +105,7 @@ $ ~/bin/gh-new.sh
 You should get a printout that looks something like this:
 
 ```plain-text
-Created repo: <your-username>/project-name
+✓ Created repository <username>/project-name on GitHub
 
 Enumerating objects: 3, done.
 Counting objects: 100% (3/3), done.
@@ -101,7 +116,7 @@ To https://github.com/<your-username>/project-name
 Branch 'main' set up to track remote branch 'main' from 'origin'.
 ```
 
-Now go to Github and you should find a new repo called `project-name`. You might
+Now go to GitHub and you should find a new repo called `project-name`. You might
 as well delete it now so you don't forget. If the repo wasn't created, you might
 have authentication issues. I'm not sure how this script would work if git asks
 for a password, because it hasn't come up for me yet.
@@ -117,30 +132,14 @@ $ ~/bin/gh-new.sh arbitrary-name
 ```
 
 and have it insert `arbitrary-name` into the two places in our script that 
-currently say `project-name`. Here's the script again for reference:
-
-```bash
-#!/bin/bash
-
-gh create-repo project-name                 
-git remote add origin https://github.com/<your-username>/project-name
-git push -u origin main
-```
-
-So, we need to use the argument like a variable, and this is actually rather
-easy in Bash... at least for simple cases. The difficulty of handling arguments
-and variables in bash ramps up rather quickly. But a single argument is no
-problem.
-
-Arguments that are passed to your script are mapped to the special character 
-sequences `$1`, `$2`, `$3`, and so on. To see what I mean, change our script as follows:
+currently say `project-name`. Arguments that are passed to a bash script are mapped to the special character sequences `$1`, `$2`, `$3`, and so on.[^2] To see what I mean, change our script as follows:
 
 ```bash
 #!/bin/bash
 
 echo $1 $2
 
-# gh create-repo project-name
+# gh repo create project-name --public
 # git remote add origin https://github.com/kvnloughead/project-name
 # git push -u origin main
 ```
@@ -160,34 +159,33 @@ make this work is to put this in place of our hard-coded project name.
 ```bash
 #!/bin/bash
 
-gh create-repo $1
-git remote add origin https://github.com/kvnloughead/$1
+gh repo create $name --public
+git remote add origin https://github.com/kvnloughead/$1.git
 git push -u origin main
 ```
 
-But I think I'd rather be a bit more explicit, and give the variable a name:
+But if you'd rather be more explicit, you can give the variable a name:
 
 ```bash
 #!/bin/bash
 
 name=$1
 
-gh create-repo $name
-git remote add origin https://github.com/kvnloughead/$name
+gh repo create $name --public
+git remote add origin https://github.com/kvnloughead/$name.git
 git push -u origin main
 ```
 
-This shows one of the tricky parts about variables in bash. An assignment
+This shows one of the trickier parts about handling variables in bash. An assignment
 statement looks like this:
 
 ```bash
-varname=<something>
+varname=$<something>
 ```
 
-But then if you want to _refer_ to the variable, `varname` alone is not
-sufficient. You have to use `$varname`.  
+with the right-hand side starting with a `$`. But then if you want to _refer_ to the variable, `varname` alone is not sufficient. You have to use `$varname`. 
 
-Alright, the script is complete, so let's test it. Create a new local repo with
+Alright, the script is ready, so let's test it. Create a new local repo with
 the steps I showed above and then run
 
 ```plain-text
@@ -196,8 +194,7 @@ the steps I showed above and then run
 
 If you go to Github, you should find a new repo with the name you chose.
 
-There's one more thing to cover before moving on. You might be wondering if you 
-always have to use the file path when calling your script. Well, no you don't, 
+There's one more thing to cover before moving on. You might be wondering if you always have to use the file path when calling your script. Well, no you don't, 
 there are ways around that. In fact, I'm sure there are better ways around it 
 than the one I am going to show you. But this is the way I know, and it has 
 broad applicability. You can just set an bash alias. First I'll show you how to
@@ -209,26 +206,10 @@ alias gh-new='~/bin/gh-new.sh'
 ```
 
 Now whenever you enter what's on the left side of the equals sign, `gh-new`, it 
-will be replaced with what's inside the quotes on the righthand side.  One thing
-to note — you can only use aliases on the _left_ side of a command. This means
-that you can pass arguments to an alias, but can't pass an alias as an argument. 
-Now, run this command:
+will be replaced with what's inside the quotes on the righthand side, so we can run our script with `gh-new repo-name`.[^3] 
 
-```plain-text
-$ gh-new
-```
-
-You should get an error along these lines:
-
-```plain-text
-Usage: gh create-repo [OPTIONS] REPO_NAME
-
-Error: Missing argument "repo_name".
-```
-
-That shows us that the alias is working, without creating another pointless repo.
-And now we are at the last step — making this alias persist. We can do this in
-our `~/.bashrc` file, so open that in your editor of choice. This This file has
+Now we are at the last step — making this alias persist. We can do this in
+our `~/.bashrc` file, so open that in your editor of choice. This file has
 all sorts of settings pertaining to bash. Scroll all the way down to the bottom,
 add the alias
 
@@ -271,3 +252,8 @@ either
 
 The command for the second option is `source ~/.bashrc`, or `. ~/.bashrc` for
 short.
+
+
+[^2] Note that `$0` is mapped to the path of the script that is being run.
+[^3] You can only use aliases on the _left_ side of a command. This means
+that you can pass arguments to an alias, but can't pass an alias as an argument.
