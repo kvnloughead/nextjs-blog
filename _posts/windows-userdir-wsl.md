@@ -2,7 +2,7 @@
 title: 'Accessing Windows User Directory in WSL2'
 excerpt: "Not as easy as it sounds."
 coverImage: ''
-date: '2021-01-20'
+date: '2022-01-20'
 author:
   name: Kevin Loughead
   picture: ''

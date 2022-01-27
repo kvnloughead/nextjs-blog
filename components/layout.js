@@ -19,7 +19,7 @@ export default function Layout({ children }) {
       <Meta />
       <div className="min-h-screen">
         <Header />
-        <main className="pt-24 pb-10 px-6 max-w-4xl mx-auto">{children}</main>
+        <main className="pt-24 pb-10 px-6 max-w-6xl mx-auto">{children}</main>
       </div>
       <Footer />
     </>

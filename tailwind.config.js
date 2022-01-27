@@ -21,6 +21,8 @@ module.exports = {
       },
       spacing: {
         28: '7rem',
+        '256': '64rem',
+        '288': '72rem'
       },
       letterSpacing: {
         tighter: '-.04em',
