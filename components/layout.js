@@ -6,8 +6,10 @@ import Footer from './footer';
 import Header from './header';
 import Meta from './meta';
 
-require('prismjs/components/prism-bash');
-require('prismjs/components/prism-jsx');
+require('prismjs/components/prism-bash.min.js');
+require('prismjs/components/prism-python.min.js');
+require('prismjs/components/prism-jsx.min.js');
+require('prismjs/components/prism-c.min.js');
 require('../styles/prism-plain-text');
 
 export default function Layout({ children }) {
@@ -19,7 +21,7 @@ export default function Layout({ children }) {
       <Meta />
       <div className="min-h-screen">
         <Header />
-        <main className="pt-24 pb-10 px-6 max-w-4xl mx-auto">{children}</main>
+        <main className="pt-24 pb-10 px-6 max-w-6xl mx-auto">{children}</main>
       </div>
       <Footer />
     </>

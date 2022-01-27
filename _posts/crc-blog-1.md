@@ -1,9 +1,9 @@
 ---
-title: 'A Script to Create React Components'
+title: 'A Script to Create React Components. Part 1 of 2'
 excerpt: | 
   After creating new React components manually for the umpteenth time I decided 
   that the process could be automated a bit. We have CRA for React apps. Why not 
-  CRC, for React components? Part 1 of 2.
+  CRC, for React components?
 coverImage: ''
 date: '2021-10-13'
 author:

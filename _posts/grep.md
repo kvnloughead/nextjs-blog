@@ -2,7 +2,7 @@
 title: 'How to search through text with grep'
 excerpt: 'A few simple ways to use a complicated tool.'
 coverImage: ''
-date: '2021-11-17'
+date: '2022-01-01'
 author:
   name: Kevin Loughead
 ogImage:

@@ -1,8 +1,8 @@
 ---
-title: 'A Script to Create React Components'
+title: 'A Script to Create React Components. Part 2 of 2'
 excerpt: |
   This is the second part of my article on writing a bash script to automate some
-  parts of creating React components. Part 2 of 2.
+  parts of creating React components.
 coverImage: ''
 date: '2021-10-13'
 author:
