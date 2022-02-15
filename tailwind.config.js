@@ -21,8 +21,8 @@ module.exports = {
       },
       spacing: {
         28: '7rem',
-        '256': '64rem',
-        '288': '72rem'
+        256: '64rem',
+        288: '72rem',
       },
       letterSpacing: {
         tighter: '-.04em',
@@ -38,6 +38,9 @@ module.exports = {
       boxShadow: {
         sm: '0 5px 10px rgba(0, 0, 0, 0.12)',
         md: '0 8px 30px rgba(0, 0, 0, 0.12)',
+      },
+      gridTemplateColumns: {
+        header: '5fr 1fr',
       },
     },
   },

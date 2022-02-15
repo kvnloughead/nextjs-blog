@@ -6,10 +6,10 @@ import Footer from './footer';
 import Header from './header';
 import Meta from './meta';
 
-require('prismjs/components/prism-bash.min.js');
-require('prismjs/components/prism-python.min.js');
-require('prismjs/components/prism-jsx.min.js');
-require('prismjs/components/prism-c.min.js');
+require('prismjs/components/prism-bash.min');
+require('prismjs/components/prism-python.min');
+require('prismjs/components/prism-jsx.min');
+require('prismjs/components/prism-c.min');
 require('../styles/prism-plain-text');
 
 export default function Layout({ children }) {
