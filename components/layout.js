@@ -22,8 +22,8 @@ export default function Layout({ children }) {
       <div className="min-h-screen">
         <Header />
         <main className="pt-24 pb-10 px-6 max-w-6xl mx-auto">{children}</main>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

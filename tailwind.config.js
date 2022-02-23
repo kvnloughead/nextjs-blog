@@ -1,6 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
+  darkMode: 'class',
   mode: 'jit',
   purge: ['./components/**/*.js', './pages/**/*.js'],
   theme: {
@@ -11,9 +13,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'accent-1': '#FAFAFA',
-        'accent-2': '#EAEAEA',
-        'accent-7': '#333',
+        slate: colors.slate,
         success: '#0070f3',
         cyan: '#79FFE1',
         standard: '#676778',

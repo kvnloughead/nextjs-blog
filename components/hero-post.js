@@ -5,7 +5,7 @@ import DateFormatter from './date-formatter';
 
 export default function HeroPost({ title, excerpt, slug, date }) {
   return (
-    <div className="pb-20 mb-20 border-b border-accent-2">
+    <div className="pb-20 mb-20 border-b">
       <h3 className="font-bold font-serif text-3xl md:text-6xl leading-snug">
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
           <a href={`/posts/${slug}`} className="hover:underline">

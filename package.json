@@ -12,6 +12,7 @@
     "gray-matter": "4.0.2",
     "hast-util-sanitize": "^3.0.2",
     "next": "latest",
+    "next-themes": "^0.1.1",
     "prismjs": "^1.25.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

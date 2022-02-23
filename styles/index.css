@@ -4,29 +4,43 @@
 
 @layer components {
   .excerpt-text {
-    @apply text-base leading-relaxed mb-4 md:text-lg
+    @apply text-base leading-relaxed mb-4 md:text-lg;
   }
   .post-index-text {
-    @apply mb-8 text-xs uppercase tracking-wider text-blue-500
+    @apply mb-8 text-xs uppercase tracking-wider text-blue-500;
   }
 
   .date-text {
-    @apply font-mono text-xs uppercase tracking-wider font-light
+    @apply font-mono text-xs uppercase tracking-wider font-light;
   }
 
   pre {
-    @apply rounded-md
-  }
-  
-  p > code {  /* inline code style */
-    @apply bg-gray-200 px-2 rounded-md
+    @apply rounded-md;
   }
 
-  p > a {  /* style links inside markdown paragraphs */
-    @apply underline
+  p > code {
+    /* inline code style */
+    @apply bg-gray-200 px-2 rounded-md;
+  }
+
+  p > a {
+    /* style links inside markdown paragraphs */
+    @apply underline;
   }
 }
 
-html, body {
+html,
+body {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+:root {
+  /* Your default theme */
+  --background: white;
+  --foreground: black;
+}
+
+[data-theme='dark'] {
+  --background: black;
+  --foreground: white;
 }
