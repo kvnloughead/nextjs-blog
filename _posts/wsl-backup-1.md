@@ -1,7 +1,7 @@
 ---
-title: ' A Backup Script for WSL'
+title: 'Backing Up WSL2'
 excerpt: |
-  I thought I'd share my setup for backing up my Windows Subsystem for Linux distros. I'm sure it's not optimal, but it's working for me so far.
+  Part 1 of a 3 part series detailing my setup for backing up WSL2 files. I'm sure it's not optimal, but it's been working for me so far. This part details the actual Bash script, while the later installments explain my attempts to automate it.
 coverImage: ''
 date: '2022-03-15'
 author:
@@ -10,7 +10,7 @@ ogImage:
   url: ''
 ---
 
-I thought I'd share my setup for backing up my Windows Subsystem for Linux distros. I'm sure it's not optimal, but it's working for me so far.
+This is the first in a three part series detailing my setup for backing up WSL2 files. I'm sure it's not optimal, but it's been working for me so far.
 
 ## The Basic Script
 

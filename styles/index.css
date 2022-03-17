@@ -27,6 +27,13 @@
     /* style links inside markdown paragraphs */
     @apply underline;
   }
+
+  /* Reset list-style in blog posts */
+  article > ul,
+  ol {
+    list-style: auto;
+    padding: revert;
+  }
 }
 
 html,
